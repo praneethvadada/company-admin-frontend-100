@@ -1,0 +1,623 @@
+/* src/components/domains/DomainManagement.css */
+
+.domain-management {
+  padding: 24px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.header-content p {
+  font-size: 1.125rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.primary-button.small {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+.primary-button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Domain Tree Styles */
+.domain-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.domain-node {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.domain-node:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.domain-header {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  margin-right: 12px;
+}
+
+.expand-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.domain-icon {
+  font-size: 1.5rem;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.domain-info {
+  flex: 1;
+}
+
+.domain-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.domain-description {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0 0 12px 0;
+}
+
+.domain-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.domain-stats .stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.domain-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-subdomain-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-subdomain-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dropdown-menu-container {
+  position: relative;
+}
+
+.dropdown-menu-container > button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu-container > button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  min-width: 160px;
+  overflow: hidden;
+}
+
+.dropdown-menu button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: #374151;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-menu button.danger {
+  color: #dc2626;
+}
+
+.dropdown-menu button.danger:hover {
+  background-color: #fef2f2;
+}
+
+/* SubDomain Styles */
+.subdomain-list {
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.subdomain-node {
+  border-left: 3px solid #e2e8f0;
+  margin-left: 24px;
+  background: white;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1px;
+}
+
+.subdomain-node.level-1 {
+  border-left-color: #3b82f6;
+}
+
+.subdomain-node.level-2 {
+  border-left-color: #10b981;
+  margin-left: 48px;
+}
+
+.subdomain-node.level-3 {
+  border-left-color: #f59e0b;
+  margin-left: 72px;
+}
+
+.subdomain-node.level-4 {
+  border-left-color: #ef4444;
+  margin-left: 96px;
+}
+
+.subdomain-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background: white;
+  transition: background-color 0.2s ease;
+}
+
+.subdomain-header:hover {
+  background-color: #f8fafc;
+}
+
+.subdomain-icon {
+  font-size: 1.25rem;
+  margin-right: 12px;
+  color: #6b7280;
+}
+
+.subdomain-info {
+  flex: 1;
+}
+
+.subdomain-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.leaf-badge {
+  background-color: #10b981;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.subdomain-path {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+}
+
+.subdomain-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.subdomain-stats .stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.subdomain-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-project-btn {
+  font-size: 0.875rem;
+  padding: 6px 12px;
+}
+
+/* Project List Styles */
+.project-list {
+  padding: 16px 20px 16px 64px;
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.project-item:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.project-icon {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-right: 12px;
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-title {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.project-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.project-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal.large {
+  max-width: 700px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 0 24px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.modal-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.modal-header button:hover {
+  background-color: #f3f4f6;
+}
+
+.modal form {
+  padding: 0 24px 24px 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.form-group.checkbox label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.form-group.checkbox input {
+  width: auto;
+  margin-right: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-actions button[type="button"] {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.modal-actions button[type="button"]:hover {
+  background: #e5e7eb;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 80px 40px;
+  color: #6b7280;
+}
+
+.empty-state svg {
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 8px 0;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin: 0 0 24px 0;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #6b7280;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .domain-management {
+    padding: 16px;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .domain-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .domain-actions {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+  
+  .subdomain-node {
+    margin-left: 12px;
+  }
+  
+  .subdomain-node.level-2 {
+    margin-left: 24px;
+  }
+  
+  .subdomain-node.level-3 {
+    margin-left: 36px;
+  }
+  
+  .subdomain-node.level-4 {
+    margin-left: 48px;
+  }
+  
+  .project-list {
+    padding-left: 32px;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal {
+    width: 95%;
+    margin: 20px;
+  }
+}

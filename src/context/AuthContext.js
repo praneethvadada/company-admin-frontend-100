@@ -188,7 +188,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Step 2: Reset password with OTP
-  const resetPassword = async (resetData) => {
+  const resetPassword = async (resetData) => { 
     console.log('🔄 AuthContext: Reset password attempt started');
     console.log('📤 Reset password request data:', { 
       hasToken: !!resetData.token,
