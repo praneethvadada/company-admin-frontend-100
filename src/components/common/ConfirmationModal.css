@@ -1,0 +1,16 @@
+.confirmation-modal {
+  padding: 20px 0;
+}
+
+.confirmation-modal .message {
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+.confirmation-modal .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}

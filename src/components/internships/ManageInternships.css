@@ -1,0 +1,25 @@
+.manage-internships {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.coming-soon {
+  text-align: center;
+  padding: 48px;
+  background: #f9fafb;
+  border-radius: 12px;
+  margin-top: 32px;
+}
+
+.coming-soon h3 {
+  margin: 0 0 16px 0;
+  font-size: 24px;
+  color: #111827;
+}
+
+.coming-soon p {
+  margin: 8px 0;
+  color: #6b7280;
+  font-size: 16px;
+}

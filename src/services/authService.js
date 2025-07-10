@@ -262,8 +262,167 @@ export const authService = {
   reorderImages: (data) => {
     console.log('🖼️ authService.reorderImages: Making reorder images API call');
     return api.put('/admin/images/reorder', data);
-  }
+  },
+
+  // Add this right before the closing }; in your authService object
+
+  // Branch management (for internships)
+  getBranches: (params = {}) => {
+    console.log('🌿 authService.getBranches: Making get branches API call');
+    const queryString = new URLSearchParams(params).toString();
+    const url = queryString ? `/admin/branches?${queryString}` : '/admin/branches';
+    return api.get(url);
+  },
+
+  createBranch: (data) => {
+    console.log('🌿 authService.createBranch: Making create branch API call');
+    return api.post('/admin/branches', data);
+  },
+
+  updateBranch: (id, data) => {
+    console.log('🌿 authService.updateBranch: Making update branch API call');
+    return api.put(`/admin/branches/${id}`, data);
+  },
+
+  deleteBranch: (id) => {
+    console.log('🌿 authService.deleteBranch: Making delete branch API call');
+    return api.delete(`/admin/branches/${id}`);
+  },
+
+  // Internship management
+  getInternships: (params = {}) => {
+    console.log('🎓 authService.getInternships: Making get internships API call');
+    const queryString = new URLSearchParams(params).toString();
+    const url = queryString ? `/admin/internships?${queryString}` : '/admin/internships';
+    return api.get(url);
+  },
+
+  createInternship: (data) => {
+    console.log('🎓 authService.createInternship: Making create internship API call');
+    return api.post('/admin/internships', data);
+  },
+
+  updateInternship: (id, data) => {
+    console.log('🎓 authService.updateInternship: Making update internship API call');
+    return api.put(`/admin/internships/${id}`, data);
+  },
+
+  deleteInternship: (id) => {
+    console.log('🎓 authService.deleteInternship: Making delete internship API call');
+    return api.delete(`/admin/internships/${id}`);
+  },
+
+  // Enrollment management  
+  getEnrollments: (params = {}) => {
+    console.log('👥 authService.getEnrollments: Making get enrollments API call');
+    const queryString = new URLSearchParams(params).toString();
+    const url = queryString ? `/admin/enrollments?${queryString}` : '/admin/enrollments';
+    return api.get(url);
+  },
+
+  updateEnrollment: (id, data) => {
+    console.log('👥 authService.updateEnrollment: Making update enrollment API call');
+    return api.put(`/admin/enrollments/${id}`, data);
+  },
+
+  exportEnrollments: (params = {}) => {
+    console.log('💾 authService.exportEnrollments: Making export enrollments API call');
+    const queryString = new URLSearchParams(params).toString();
+    const url = queryString ? `/admin/enrollments/export/csv?${queryString}` : '/admin/enrollments/export/csv';
+    return api.get(url, { responseType: 'blob' });
+  },
+
+  // Ratings and feedback management
+  getRatings: (params = {}) => {
+    console.log('⭐ authService.getRatings: Making get ratings API call');
+    const queryString = new URLSearchParams(params).toString();
+    const url = queryString ? `/admin/ratings?${queryString}` : '/admin/ratings';
+    return api.get(url);
+  },
+
+  updateRating: (id, data) => {
+    console.log('⭐ authService.updateRating: Making update rating API call');
+    return api.put(`/admin/ratings/${id}`, data);
+  },
+
+  deleteRating: (id) => {
+    console.log('⭐ authService.deleteRating: Making delete rating API call');
+    return api.delete(`/admin/ratings/${id}`);
+  },
+
+  // Add these missing methods to your authService.js
+
+// Internship Domain management (CRITICAL - your frontend needs this)
+getInternshipDomains: (params = {}) => {
+  console.log('🎯 authService.getInternshipDomains: Making get internship domains API call');
+  const queryString = new URLSearchParams(params).toString();
+  const url = queryString ? `/admin/internship-domains?${queryString}` : '/admin/internship-domains';
+  return api.get(url);
+},
+
+getDomainsByBranch: (branchId, params = {}) => {
+  console.log('🌿 authService.getDomainsByBranch: Making get domains by branch API call');
+  const queryString = new URLSearchParams(params).toString();
+  const url = queryString ? `/admin/branches/${branchId}/internship-domains?${queryString}` : `/admin/branches/${branchId}/internship-domains`;
+  return api.get(url);
+},
+
+createInternshipDomain: (data) => {
+  console.log('🎯 authService.createInternshipDomain: Making create internship domain API call');
+  return api.post('/admin/internship-domains', data);
+},
+
+updateInternshipDomain: (id, data) => {
+  console.log('🎯 authService.updateInternshipDomain: Making update internship domain API call');
+  return api.put(`/admin/internship-domains/${id}`, data);
+},
+
+deleteInternshipDomain: (id) => {
+  console.log('🎯 authService.deleteInternshipDomain: Making delete internship domain API call');
+  return api.delete(`/admin/internship-domains/${id}`);
+},
+
+// Additional useful methods
+getBranchStats: () => {
+  console.log('📊 authService.getBranchStats: Making get branch stats API call');
+  return api.get('/admin/branches/stats');
+},
+
+getInternshipStats: (id) => {
+  console.log('📊 authService.getInternshipStats: Making get internship stats API call');
+  return api.get(`/admin/internships/${id}/stats`);
+},
+
+getInternshipLeadStats: () => {
+  console.log('📊 authService.getInternshipLeadStats: Making get internship lead stats API call');
+  return api.get('/admin/internship-leads/stats');
+},
+
+getRatingStats: () => {
+  console.log('📊 authService.getRatingStats: Making get rating stats API call');
+  return api.get('/admin/ratings/stats');
+},
+
+searchInternships: (params = {}) => {
+  console.log('🔍 authService.searchInternships: Making search internships API call');
+  const queryString = new URLSearchParams(params).toString();
+  const url = queryString ? `/admin/internships/search?${queryString}` : '/admin/internships/search';
+  return api.get(url);
+},
+
+approveRating: (id) => {
+  console.log('✅ authService.approveRating: Making approve rating API call');
+  return api.put(`/admin/ratings/${id}/approve`);
+},
+
+bulkApproveRatings: (data) => {
+  console.log('✅ authService.bulkApproveRatings: Making bulk approve ratings API call');
+  return api.put('/admin/ratings/bulk-approve', data);
+}
+
+  
 };
+
 
 
 // // old code
